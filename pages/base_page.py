@@ -36,27 +36,23 @@ class BasePage:
         for _ in range(times):
             self.driver.execute_script(f'window.scrollBy(0, {pixels})')
 
-    def save_screenshot(self, name: str) -> Path:
-        """
-        Saves a screenshot and returns the file path.
-        Screenshot is saved in the 'screenshots' directory.
-        """
-        screenshot_dir = Path(__file__).parent.parent / 'screenshots'
-        screenshot_dir.mkdir(exist_ok=True)
-        screenshot_path = screenshot_dir / f'{name}.png'
-        self.driver.save_screenshot(str(screenshot_path))
-        return screenshot_path
-
     def save_and_attach_screenshot(self, name: str) -> Path:
         """
-        Saves a screenshot and attaches it to the Allure report.
+        Saves a screenshot (with device-specific filename) and attaches it to the Allure report.
         Returns the path to the saved screenshot.
         """
-        screenshot_path = self.save_screenshot(name)
+        device = getattr(self.driver, "device_name", "unknown_device").replace(" ", "_")
+        screenshot_dir = Path(__file__).parent.parent / 'screenshots'
+        screenshot_dir.mkdir(exist_ok=True)
+        screenshot_path = screenshot_dir / f'{name}_{device}.png'
+
+        self.driver.save_screenshot(str(screenshot_path))
+
         if screenshot_path.exists():
             allure.attach.file(
                 str(screenshot_path),
-                name=name,
+                name=f"{name} - {device}",
                 attachment_type=allure.attachment_type.PNG
             )
         return screenshot_path
+

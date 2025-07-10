@@ -9,8 +9,8 @@ This test validates that users can search for a game (e.g., _StarCraft II_) and 
 ## 🎥 Test in Action
 
 > _👇 The test runs locally with mobile emulation:_
+  
 
-![Uploading twitch_automation-ezgif.com-video-to-gif-converter.gif…]()
 
 ---
 
@@ -77,8 +77,11 @@ twitch-mobile-tests/
 │   ├── result_page.py           # Handles video result interaction
 │   └── opened_video_page.py     # Verifies that video is playing
 │
-└── twitch_locators.py           # Centralized element locators
+├── twitch_locators.py           # Centralized element locators
+└── screenshots/                 # Auto-generated screenshots (ignored in Git)
 ```
+
+📝 _Note: Screenshots are saved per device (e.g., `video_loaded_pixel_2.png`) and attached to Allure reports._
 
 ---
 
@@ -90,7 +93,7 @@ twitch-mobile-tests/
 4. **Click** on an available video result  
 5. **Handle** the mature content warning if shown  
 6. **Verify** that the video player is visible  
-7. **Capture** and attach a screenshot to the Allure report  
+7. **Capture** and attach a **device-specific** screenshot to the Allure report  
 
 ---
 
@@ -103,6 +106,7 @@ twitch-mobile-tests/
 
 ---
 
-## 📄 License
+## 📄 Notes
 
-This project is open-source and available under the [MIT License](LICENSE).
+📁 _The `screenshots/` folder is auto-created and should be added to `.gitignore` to avoid cluttering the repository._
+
