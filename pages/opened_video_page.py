@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 from selenium.webdriver.remote.webdriver import WebDriver
-from locators.locators import Locators
+from locators.twitch_locators import Locators
 
 
 class OpenedVideoPage(BasePage):

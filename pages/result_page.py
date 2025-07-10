@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 from selenium.webdriver.remote.webdriver import WebDriver
-from locators.locators import Locators
+from locators.twitch_locators import Locators
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
@@ -14,13 +14,13 @@ class ResultPage(BasePage):
     def __init__(self, driver: WebDriver):
         super().__init__(driver)
 
-    def click_result_video(self):
+    def open_available_video_result(self):
         """
         Clicks the first video result from the search results.
         If a mature content warning appears, clicks the 'Start Watching' button to proceed.
         """
-        self.wait_for_visible(Locators.VIEW_ALL_HTEXT_LOC)
-        self.wait_for_clickable(Locators.THE_VIDEO_LOC).click()
+        self.wait_for_visible(Locators.VIEW_ALL_RESULTS_INDICATOR_LOC)
+        self.wait_for_clickable(Locators.VIDEO_RESULT_LOC).click()
 
         try:
             # Localized 5-second wait

@@ -1,8 +1,7 @@
 from pages.base_page import BasePage
 from selenium.webdriver.remote.webdriver import WebDriver
-from locators.locators import Locators
+from locators.twitch_locators import Locators
 from selenium.webdriver.common.keys import Keys
-from time import sleep
 
 
 class MainPage(BasePage):
@@ -17,5 +16,4 @@ class MainPage(BasePage):
         search_input.clear()
         search_input.send_keys(text_to_search)
         search_input.send_keys(Keys.ENTER)
-        sleep(5)
-        self.wait_for_visible(Locators.VIEW_ALL_HTEXT_LOC)
+        self.wait_for_visible(Locators.VIEW_ALL_RESULTS_INDICATOR_LOC)

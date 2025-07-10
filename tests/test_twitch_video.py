@@ -16,7 +16,7 @@ def test_the_twitch(driver, main_page, result_page, opened_video_page):
         result_page.scroll_down(200, 2)
 
     with allure.step("Wait for search results and click the first video"):
-        result_page.click_result_video()
+        result_page.open_available_video_result()
 
     with allure.step("Verify video player is visible"):
         assert opened_video_page.verify_video_opened(), "Video did not load properly"

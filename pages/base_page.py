@@ -36,7 +36,6 @@ class BasePage:
         for _ in range(times):
             self.driver.execute_script(f'window.scrollBy(0, {pixels})')
 
-
     def save_screenshot(self, name: str) -> Path:
         """
         Saves a screenshot and returns the file path.
