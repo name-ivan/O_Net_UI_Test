@@ -12,7 +12,6 @@ This test validates that users can search for a game (e.g., _StarCraft II_) and 
   
 ![Test Run](./assets/test_run.gif)
 
-
 ---
 
 ## 🚀 How to Run the Tests
