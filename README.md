@@ -10,8 +10,7 @@ This test validates that users can search for a game (e.g., _StarCraft II_) and 
 
 > _👇 The test runs locally with mobile emulation:_
   
-![Uploading twitch_automation.gif…]()
-
+![Test Run](./assets/test_run.gif)
 
 ---
 
