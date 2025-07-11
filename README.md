@@ -12,6 +12,7 @@ This test validates that users can search for a game (e.g., _StarCraft II_) and 
   
 ![Uploading twitch_automation-ezgif.com-video-to-gif-converter.gif…]()
 
+
 ---
 
 ## 🚀 How to Run the Tests
