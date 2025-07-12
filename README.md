@@ -106,6 +106,7 @@ twitch-mobile-tests/
 ├── screenshots/                 # Auto-generated screenshots (ignored in Git)
 └── assets/                      # Static media (e.g., GIF used in README)
     └── twitch_run.gif
+    └── Allure_reporting.png
 ```
 
 📝 _Note: Screenshots are saved per device (e.g., `video_loaded_pixel_2.png`) and attached to Allure reports._  
