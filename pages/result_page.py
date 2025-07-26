@@ -1,9 +1,8 @@
 from pages.base_page import BasePage
 from selenium.webdriver.remote.webdriver import WebDriver
-from locators.twitch_locators import Locators
-from selenium.webdriver.support.ui import WebDriverWait
+from locators.result_page_locators import ResultPageLocators as result_loc
+from locators.opened_video_page_locators import OpenedVideoPageLocators as video_loc
 from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.support import expected_conditions as EC
 
 
 class ResultPage(BasePage):
@@ -19,15 +18,12 @@ class ResultPage(BasePage):
         Clicks the first video result from the search results.
         If a mature content warning appears, clicks the 'Start Watching' button to proceed.
         """
-        self.wait_for_visible(Locators.VIEW_ALL_RESULTS_INDICATOR_LOC)
-        self.wait_for_clickable(Locators.VIDEO_RESULT_LOC).click()
+        self.wait_for_visible(result_loc.VIEW_ALL_RESULTS_INDICATOR)
+        self.wait_for_clickable(result_loc.VIDEO_RESULT).click()
 
         try:
             # Localized 5-second wait
-            wait_short = WebDriverWait(self.driver, 5)
-            mature_content_button = wait_short.until(
-                EC.element_to_be_clickable(Locators.START_WATCHING_BUTTON_LOC)
-            )
+            mature_content_button = self.wait_for_clickable(video_loc.START_WATCHING_BUTTON, timeout=5)
             mature_content_button.click()
         except TimeoutException:
             # No warning appeared — nothing to handle

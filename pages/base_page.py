@@ -15,6 +15,7 @@ class BasePage:
     def __init__(self, driver: WebDriver, timeout: int = 10):
         """Initialize with WebDriver and wait timeout."""
         self.driver = driver
+        self.default_timeout = timeout
         self.wait = WebDriverWait(self.driver, timeout)
 
     def open_page(self):
@@ -25,10 +26,10 @@ class BasePage:
         full_url = urljoin(self.base_url, self.page_url)
         self.driver.get(full_url)
 
-    def wait_for_clickable(self, locator):
+    def wait_for_clickable(self, locator, timeout=None):
         return self.wait.until(EC.element_to_be_clickable(locator))
 
-    def wait_for_visible(self, locator):
+    def wait_for_visible(self, locator, timeout=None):
         return self.wait.until(EC.visibility_of_element_located(locator))
 
     def scroll_down(self, pixels: int, times: int = 1):
@@ -55,4 +56,3 @@ class BasePage:
                 attachment_type=allure.attachment_type.PNG
             )
         return screenshot_path
-

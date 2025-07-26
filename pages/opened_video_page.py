@@ -1,6 +1,6 @@
 from pages.base_page import BasePage
 from selenium.webdriver.remote.webdriver import WebDriver
-from locators.twitch_locators import Locators
+from locators.opened_video_page_locators import OpenedVideoPageLocators as video_loc
 
 
 class OpenedVideoPage(BasePage):
@@ -13,5 +13,5 @@ class OpenedVideoPage(BasePage):
 
     def verify_video_opened(self):
         """Returns True if the video player is visible."""
-        video_player = self.wait_for_visible(Locators.CLICKED_VIDEO_OPENED_LOC)
+        video_player = self.wait_for_visible(video_loc.VIDEO_PLAYER)
         return video_player.is_displayed()
